@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <title>My Art Gallery</title>
+  <nav>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Gallery</a></li>
+    <li><a href="#">Shop</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+  <style>
+    html {
+  scroll-behavior: smooth;
+}
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f3f1ed;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #613535;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    header h1{
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 20px;
+    }
+    header, footer {
+  background: #8c55ec; /* deep blue-gray */
+  color: #decc9d;      /* light gray */
+}
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(134, 243, 243, 0.5);
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px; }
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;}
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}.wide {
+  grid-column: span 2;
+}
+
+.tall {
+  grid-row: span 2;
+}
+.hero {
+  background: linear-gradient(to right, #2c3e50, #34495e);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+.hero {
+  background: linear-gradient(to right, #2c3e50, #34495e);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  background: #2c3e50;
+  padding: 10px;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #f39c12;
+}
+.lightbox {
+  display: none; /* hidden by default */
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.3);
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+.shop {
+  padding: 40px;
+  background: #f4f4f4;
+  text-align: center;
+}
+
+.shop h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.product {
+  display: inline-block;
+  margin: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.product img {
+  width: 250px;
+  border-radius: 8px;
+}
+
+.buy-button {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.buy-button:hover {
+  background: #f39c12;
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero {
+  background-image: url('background.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Art Gallery</h1>
+  </header>
+
+  <section class="gallery">
+    <img src="art1.jpg" class="wide" alt="Artwork 1">
+    <img src="art2.jpg" class="tall" alt="Artwork 2">
+    <img src="art3.jpg" alt="Artwork 3">
+    
+  </section>
+ 
+  <div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img">
+</div>
+<section class="shop">
+  <h2>Shop My Art</h2>
+  <div class="product">
+    <img src="art1.jpg" alt="Artwork 1">
+    <h3>Sunset Dreams</h3>
+    <p>$150</p>
+    <button class="buy-button" onclick="payWithPaystack()">Buy Now</button>
+
+    
+  </div>
+</section>
+
+
+  <section class="hero">
+  <h2>Discover My World of Art</h2>
+  <p>Unique pieces blending emotion and imagination.</p>
+</section>
+
+<section class="hero fade-in">...</section>
+<section class="gallery fade-in">...</section>
+<section class="shop fade-in">...</section>
+
+
+
+
+
+  <footer>
+    <p>© 2026 My Art Website</p>
+  </footer>
+</body>
+<script>
+  const galleryImages = document.querySelectorAll('.gallery img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('.close');
+
+  galleryImages.forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target !== lightboxImg) {
+      lightbox.style.display = 'none';
+    }
+  });
+</script>
+<script>
+  function payWithPaystack(){
+    var handler = PaystackPop.setup({
+      key: 'your-public-key-here', // Replace with your Paystack public key
+      email: 'customer@email.com', // You can dynamically set this
+      amount: 15000 * 100, // Amount in kobo (₦15000 here)
+      currency: 'NGN',
+      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // Unique transaction reference
+      callback: function(response){
+        alert('Payment successful! Reference: ' + response.reference);
+      },
+      onClose: function(){
+        alert('Transaction was not completed, window closed.');
+      }
+    });
+    handler.openIframe();
+  }
+</script>
+<script>
+  const faders = document.querySelectorAll('.fade-in');
+
+  const appearOptions = {
+    threshold: 0.2,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      appearOnScroll.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+</script>
+
+
+</html>
